@@ -28,11 +28,11 @@ jobs:
         if: steps.skip_check.outputs.skip == 'false'
         run: |
           info="$(date '+%A, %d %B %Y - %H:%M WIB')"
-          echo "$info" >> note.txt
+          echo "$info" >> date.txt
           git config user.name "seanwrds"
           git config user.email "${{ secrets.GIT_EMAIL }}"
           branch=$(git rev-parse --abbrev-ref HEAD)
-          git add note.txt
+          git add date.txt
           git commit -m "$info"
           git pull --rebase origin "$branch"
           git push origin "$branch"
